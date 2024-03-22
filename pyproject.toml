@@ -2,6 +2,6 @@
 line-length = 88
 extend-exclude = '/migrations'
 
-[isort]
-profile = black
-skip-glob = '/migrations'
+[tool.isort]
+profile = "black"
+skip= ["migrations","env"]
