@@ -1,23 +1,24 @@
-from sqlalchemy import Column, DateTime, Integer, String, Unicode, create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Column, DateTime, Integer, String, Unicode
 
-Base = declarative_base()
+from model.base_model import BaseModel
 
 
-class Email(Base):
+class Email(BaseModel):
     __tablename__ = "emails"
 
-    id = Column(Integer, primary_key=True)
     event_id = Column(Integer, nullable=False)
     email_subject = Column(String)
     email_content = Column(Unicode)
     email_sent_at = Column(DateTime, nullable=False)
 
+    __abstract__ = False
+    
 
-class Recipient(Base):
+
+class Recipient(BaseModel):
     __tablename__ = "email_recipient"
 
-    id = Column(Integer, primary_key=True)
     event_id = Column(Integer, nullable=False)
     email_recipient = Column(String, nullable=False)
+
+    __abstract__ = False

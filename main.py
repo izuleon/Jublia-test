@@ -1,10 +1,10 @@
 from flask import Flask, redirect, url_for
 
-from event_mail import route
+from route import event_mail
 
 app = Flask(__name__)
 
-app.register_blueprint(route.event_mail_bp)
+app.register_blueprint(event_mail.event_mail_bp)
 
 
 @app.route("/")
