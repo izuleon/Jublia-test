@@ -1,20 +1,20 @@
-from flask import Flask, redirect, url_for
+import os
 
-from route import event_mail
+from dotenv import dotenv_values
+from flask import Flask
+
+from route import event_mail, index
+
+config = {
+    **dotenv_values(".env.shared"),  # load shared development variables
+    **dotenv_values(".env.secret"),  # load sensitive variables
+    **os.environ,  # override loaded values with environment variables
+}
 
 app = Flask(__name__)
 
 app.register_blueprint(event_mail.event_mail_bp)
-
-
-@app.route("/")
-def index():
-    return "hello world"
-
-
-@app.route("/save_emails")
-def redirect_and_save_emails():
-    return redirect(url_for("event_mail.save_emails"))
+app.register_blueprint(index.index_bp)
 
 
 if __name__ == "__main__":

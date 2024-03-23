@@ -1,22 +1,18 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">Event Mail</h3>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/izuleon/Jublia-test/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/izuleon/Jublia-test/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> e-mail scheduler based on event
     <br> 
 </p>
 
@@ -24,7 +20,6 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
 - [Usage](#usage)
 - [Built Using](#built_using)
 - [TODO](../TODO.md)
@@ -34,37 +29,38 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+For sending mass email to a certain group or event at a scheduled time
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
 
 ```
-Give examples
+python ^3.12.2
+pip ^24.0
 ```
 
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running.
 
-Say what the step will be
-
+Installing requirement
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+pip install -r requirement.txt
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+alembic migrations (if needed to)
+```
+alembic upgrade head
+```
+
+Running aplication
+```
+python main.py
+```
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
@@ -96,19 +92,12 @@ Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [SQLAlchemy](https://docs.sqlalchemy.org/) - Database ORM
+- [Alembic](https://alembic.sqlalchemy.org/) - Database migration management
+- [Flask](https://flask.palletsprojects.com/) - Web Framework
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@izuleon](https://github.com/izuleon) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+See also the list of [contributors](https://github.com/izuleon/Jublia-test/contributors) who participated in this project.

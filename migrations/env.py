@@ -4,12 +4,15 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from model import base_model
-from model import event_mail
+from model import base_model, event_mail
+from main import config as env_config
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+db_config = env_config.get('DB_URI','sqlite:///db/sqlite-event.db')
+config.set_main_option('sqlalchemy.url', db_config)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
