@@ -1,4 +1,5 @@
 alembic==1.13.1
+APScheduler==3.10.4
 black==24.3.0
 blinker==1.7.0
 click==8.1.7
@@ -15,6 +16,11 @@ mypy-extensions==1.0.0
 packaging==24.0
 pathspec==0.12.1
 platformdirs==4.2.0
+python-dotenv==1.0.1
+pytz==2024.1
+six==1.16.0
 SQLAlchemy==2.0.28
 typing_extensions==4.10.0
+tzdata==2024.1
+tzlocal==5.2
 Werkzeug==3.0.1
