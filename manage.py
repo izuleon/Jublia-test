@@ -1,12 +1,12 @@
 from flask import Flask
-from werkzeug.serving import WSGIRequestHandler
 
-from db.base_db import db_session, init_db
-from route import event_mail, index
+from db.base_db import db_session
+from route import event_mail, index, recipient
 
 app = Flask(__name__)
 
 app.register_blueprint(event_mail.event_mail_bp)
+app.register_blueprint(recipient.recipient_bp)
 app.register_blueprint(index.index_bp)
 
 # WSGIRequestHandler.sigterm_handler = shutdown_scheduler

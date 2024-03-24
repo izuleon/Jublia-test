@@ -4,7 +4,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from schema import event_mail
+from schema import event_mail, recipient
 from utils.constant import config as env_config
 
 # this is the Alembic Config object, which provides
@@ -23,7 +23,8 @@ if config.config_file_name is not None:
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 target_metadata = [
-        event_mail.BaseModel.metadata,
+        event_mail.Email.metadata,
+        # recipient.Recipient.metadata,
     ]
 
 # other values from the config, defined by the needs of env.py,
