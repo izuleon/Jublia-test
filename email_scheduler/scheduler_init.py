@@ -1,14 +1,12 @@
 from pytz import utc
 
 from apscheduler.executors.pool import ProcessPoolExecutor, ThreadPoolExecutor
-from apscheduler.jobstores.mongodb import MongoDBJobStore
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
 from utils.constant import config
 
 db_jobstore = config.get("DB_JOB_URI", "sqlite:///jobs.sqlite")
 jobstores = {
-    # 'mongo': MongoDBJobStore(),
     "default": SQLAlchemyJobStore(url=db_jobstore),
 }
 executors = {
@@ -26,7 +24,8 @@ scheduler = BackgroundScheduler(
     timezone=utc,
 )
 
-
+def get_scheduler():
+    return scheduler
 def scheduler_init():
     scheduler.start()
 
