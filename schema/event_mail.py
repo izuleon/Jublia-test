@@ -36,11 +36,3 @@ class Email(BaseModel):
         self.email_subject = email_subject
         self.email_content = email_content
         self.email_sent_at = email_sent_at
-
-
-class Recipient(BaseModel):
-    __tablename__ = "email_recipient"
-    __abstract__ = False
-
-    event_id = Column(Integer, nullable=False)
-    email_recipient = Column(String, nullable=False)

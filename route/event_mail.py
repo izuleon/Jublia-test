@@ -14,7 +14,7 @@ def get_emails():
     return jsonify(result)
 
 
-@event_mail_bp.get("/<id>")
+@event_mail_bp.get("/<int:id>")
 def get_email(id: int):
     result = event_mail.get_email(id=id)
     if result == None:
