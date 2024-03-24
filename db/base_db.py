@@ -10,12 +10,6 @@ db_session = scoped_session(
 )
 
 
-def init_db():
-    from schema.event_mail import BaseModel
-
-    BaseModel.metadata.create_all(bind=engine)
-
-
 def get_engine():
     return engine
 

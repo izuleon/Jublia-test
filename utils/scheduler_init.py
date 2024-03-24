@@ -1,8 +1,8 @@
-from pytz import utc
-
 from apscheduler.executors.pool import ProcessPoolExecutor, ThreadPoolExecutor
 from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 from apscheduler.schedulers.background import BackgroundScheduler
+from pytz import utc
+
 from utils.constant import config
 
 db_jobstore = config.get("DB_JOB_URI", "sqlite:///jobs.sqlite")
@@ -24,8 +24,11 @@ scheduler = BackgroundScheduler(
     timezone=utc,
 )
 
+
 def get_scheduler():
     return scheduler
+
+
 def scheduler_init():
     scheduler.start()
 

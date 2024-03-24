@@ -1,8 +1,11 @@
 from datetime import datetime
 
-from db.base_db import db_session, get_session, init_db
-from email_scheduler.scheduler_init import get_scheduler
+from flask_mail import Message
+
+from db.base_db import get_session
 from schema.event_mail import Email
+from utils.config import get_mail
+from utils.scheduler_init import get_scheduler
 
 
 def get_all_emails():
@@ -27,15 +30,45 @@ def save_emails(
         session.commit()
         session.refresh(new_email)
     scheduler = get_scheduler()
-    scheduler.add_job(send_email, 'date', run_date=sent_at, args=[new_email.id])
-    jobs = scheduler.get_jobs()
-    print(jobs)
+    scheduler.add_job(
+        send_email_to_event,
+        "date",
+        run_date=sent_at,
+        args=[new_email.id],
+        misfire_grace_time=1800,
+    )
     return new_email.to_dict()
 
-def send_email(email_id, **kwargs):
-    # ... (Your email sending code using Flask-Mail or a similar library)
-    scheduler = get_scheduler()
-    print("email_sent")
-    jobs = scheduler.get_jobs()
-    print(jobs)
-    email = get_email(email_id)
+
+def send_email_to_event(email_id, *args, **kwargs):
+    from usecase.recipient import get_all_recipient_by_event_id
+    from utils.config import get_app
+
+    email: Email = get_email(email_id)
+    recipient_list = get_all_recipient_by_event_id(email.event_id)
+    recipient_list = [recipient.email_recipient for recipient in recipient_list]
+    with get_app().app_context():
+        for recipient in recipient_list:
+            send_email(
+                recipient=recipient,
+                subject=email.email_subject,
+                content=email.email_content,
+            )
+
+
+def send_email(
+    recipient: str, subject: str = None, content: str = None, *args, **kwargs
+):
+    from utils.constant import config as env_config
+
+    mail = get_mail()
+    sender = env_config.get("MAIL_USERNAME")
+    msg = Message(
+        recipients=[
+            recipient,
+        ],
+        subject=subject,
+        body=content,
+        sender=sender,
+    )
+    mail.send(message=msg)

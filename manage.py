@@ -1,10 +1,9 @@
-from flask import Flask
-
-from email_scheduler.scheduler_init import scheduler_init, shutdown_scheduler
 from db.base_db import db_session
 from route import event_mail, index, recipient
+from utils.config import get_app
+from utils.scheduler_init import scheduler_init, shutdown_scheduler
 
-app = Flask(__name__)
+app = get_app()
 
 app.register_blueprint(event_mail.event_mail_bp)
 app.register_blueprint(recipient.recipient_bp)
