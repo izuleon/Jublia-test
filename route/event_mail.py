@@ -35,8 +35,7 @@ def save_emails():
     email_content = data.get("email_content")
     timestamp = data.get("timestamp")
     timestamp_obj = datetime.strptime(timestamp, "%d %b %Y %H:%M")
-    timestamp_obj = timestamp_obj.astimezone(pytz.timezone("Asia/Singapore"))
-
+    timestamp_obj = timestamp_obj.astimezone(tz=pytz.timezone("Asia/Singapore"))
     result = event_mail.save_emails(
         event_id=event_id,
         email_subject=email_subject,
