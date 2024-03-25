@@ -65,7 +65,7 @@ python main.py
 ## 🎈 Usage <a name="usage"></a>
 Saving emails
 ```
-{baseurl}/save_emails
+{baseurl}/save_emails[POST]
 ```
 list of all available emails scheduled
 ```
@@ -78,6 +78,10 @@ specific emails scheduled
 list of all available event_id
 ```
 {baseurl}/recipient/
+```
+save recipient
+```
+{baseurl}/recipient/[POST]
 ```
 list of all registered recipient in an event id
 ```
