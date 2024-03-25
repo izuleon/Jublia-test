@@ -24,7 +24,7 @@ def get_recipient_in_event(event_id: int):
 def get_recipient_by_id(id: int):
     result = recipient.get_recipient_by_id(id)
     if result == None:
-        abort(404)
+        return jsonify({"error": "Recipient not found"}), 404
     return jsonify(result)
 
 

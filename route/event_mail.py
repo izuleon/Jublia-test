@@ -14,15 +14,7 @@ def get_emails():
     return jsonify(result)
 
 
-@event_mail_bp.get("/<int:id>")
-def get_email(id: int):
-    result = event_mail.get_email(id=id)
-    if result == None:
-        abort(404)
-    return jsonify(result)
-
-
-@event_mail_bp.post("/save_emails")
+@event_mail_bp.post("/")
 def save_emails():
     data = request.get_json()
 
@@ -43,3 +35,11 @@ def save_emails():
         sent_at=timestamp_obj,
     )
     return result
+
+
+@event_mail_bp.get("/<int:id>")
+def get_email(id: int):
+    result = event_mail.get_email(id=id)
+    if result == None:
+        return jsonify({"error": "Email not found"}), 404
+    return jsonify(result)

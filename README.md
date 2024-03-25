@@ -3,10 +3,10 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/izuleon/Jublia-test/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/izuleon/Jublia-test/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+[![Status]]()
+[![GitHub Issues]](https://github.com/izuleon/Jublia-test/issues)
+[![GitHub Pull Requests]](https://github.com/izuleon/Jublia-test/pulls)
+[![License]](/LICENSE)
 
 </div>
 
@@ -62,6 +62,32 @@ Running aplication
 python main.py
 ```
 
+## 🎈 Usage <a name="usage"></a>
+Saving emails
+```
+{baseurl}/save_emails
+```
+list of all available emails scheduled
+```
+{baseurl}/event_mails/
+```
+specific emails scheduled
+```
+{baseurl}/event_mails/<id>
+```
+list of all available event_id
+```
+{baseurl}/recipient/
+```
+list of all registered recipient in an event id
+```
+{baseurl}/recipient/event/<event_id>
+```
+specific registered recipient
+```
+{baseurl}/recipient/id/<id>
+```
+
 ## 🔧 Running the tests <a name = "tests"></a>
 
 Explain how to run the automated tests for this system.
@@ -81,10 +107,6 @@ Explain what these tests test and why
 ```
 Give an example
 ```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
